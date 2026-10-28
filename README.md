@@ -37,5 +37,5 @@ Die Dateien landen in `dist/` (nicht im Repository).
 
 ## Vor dem Livegang
 
-- [ ] In `impressum.html` und `datenschutz.html` alle gelb markierten `[Platzhalter]` ersetzen und die Texte rechtlich prüfen lassen.
+- [ ] In `datenschutz.html` die gelb markierten `[Platzhalter]` (Hosting-Anbieter, Speicherdauer der Logfiles) ersetzen und den Text rechtlich prüfen lassen.
 - [ ] Domain prüfen: Canonical-URLs, `og:image`, `sitemap.xml` und `robots.txt` verweisen auf `https://recruiting.nexora.de/`.
