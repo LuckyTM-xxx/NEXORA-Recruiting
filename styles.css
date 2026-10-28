@@ -618,7 +618,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .kf-consent input { width: 18px; height: 18px; margin: 3px 0 0; flex: none; accent-color: var(--blue); }
 .kf-consent.bad { color: #b02a20; }
 .kf-consent a { color: var(--blue); }
-.kf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 .kf-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 22px; }
 .kf-foot button[disabled] { opacity: .6; cursor: wait; }
 .kf-status { font-size: 14px; font-weight: 600; color: var(--muted); }
