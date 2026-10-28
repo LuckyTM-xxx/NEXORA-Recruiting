@@ -593,3 +593,40 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .legal address { font-style: normal; }
 .legal a { color: var(--blue); }
 .todo { background: rgba(200, 169, 106, .28); color: var(--ink); padding: 0 4px; }
+
+/* Kontaktformular */
+.kf-hero { overflow: clip; }
+.kf-hero .hero-grid { align-items: start; }
+.kf-side ul { list-style: none; padding: 0; margin: 30px 0 0; display: grid; gap: 12px; }
+.kf-side li { display: flex; gap: 12px; align-items: flex-start; color: var(--text); }
+.kf-side li svg { width: 20px; height: 20px; flex: none; margin-top: 3px; color: var(--blue); }
+.kf-direct { margin-top: 34px; padding: 22px 24px; background: var(--white); border: 1px solid var(--line); }
+.kf-direct small { display: block; font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.kf-direct a { display: block; color: var(--ink); font-weight: 700; text-decoration: none; }
+.kf-direct a:hover { color: var(--blue); }
+.kf-card { background: var(--white); border: 1px solid var(--line); box-shadow: 0 40px 80px -40px rgba(11,17,32,.35); padding: clamp(24px, 3vw, 36px); }
+.kf-card h2 { font-family: var(--head); font-size: 24px; font-weight: 600; color: var(--ink); letter-spacing: -.02em; margin: 0 0 20px; }
+.kf-card .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.fld textarea { width: 100%; min-height: 140px; padding: 13px 14px; border: 1px solid var(--line); background: var(--frost); font: inherit; resize: vertical; transition: border-color .2s, background .2s; }
+.fld textarea:focus { outline: none; border-color: var(--blue); background: var(--white); }
+.fld.bad textarea { border-color: #c0362c; background: #fff5f4; }
+.fld input:focus-visible, .fld textarea:focus-visible, .fld select:focus-visible { box-shadow: 0 0 0 3px rgba(30,79,194,.18); }
+.fld .opt-l { font-weight: 500; color: var(--muted); }
+.kf-check { grid-column: 1 / -1; display: grid; gap: 4px; padding: 14px 16px; background: var(--frost); border-left: 3px solid var(--brass); font-size: 14.5px; color: var(--ink); }
+.kf-check small { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.kf-consent { grid-column: 1 / -1; display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--text); }
+.kf-consent input { width: 18px; height: 18px; margin: 3px 0 0; flex: none; accent-color: var(--blue); }
+.kf-consent.bad { color: #b02a20; }
+.kf-consent a { color: var(--blue); }
+.kf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.kf-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; margin-top: 22px; }
+.kf-foot button[disabled] { opacity: .6; cursor: wait; }
+.kf-status { font-size: 14px; font-weight: 600; color: var(--muted); }
+.kf-status.err { color: #b02a20; }
+.kf-sent { display: grid; gap: 14px; outline: none; }
+.kf-sent .ok { display: flex; gap: 14px; align-items: center; }
+.kf-sent .ok i { width: 46px; height: 46px; flex: none; display: grid; place-items: center; background: var(--ink); }
+.kf-sent .ok i svg { width: 22px; height: 22px; fill: none; stroke: var(--brass-2); stroke-width: 2.4; }
+.kf-sent h2 { margin: 0; }
+.kf-sent p { color: var(--muted); margin: 0; }
+@media (max-width: 640px) { .kf-card .fields { grid-template-columns: 1fr; } }

@@ -12,7 +12,7 @@
   const onScroll = () => {
     hdr.classList.toggle('solid', scrollY > 20);
     const chk = $('#stellen-check'), r = chk && chk.getBoundingClientRect();
-    mbar.classList.toggle('show', scrollY > hero.offsetHeight * .6 && !(r && r.top < innerHeight && r.bottom > 0));
+    if (mbar) mbar.classList.toggle('show', scrollY > hero.offsetHeight * .6 && !(r && r.top < innerHeight && r.bottom > 0));
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   const burger = $('.burger');
@@ -202,9 +202,9 @@
       const fd = new FormData(f), v = k => (fd.get(k) || '–');
       const rows = [['Bereich', v('bereich')], ['Position', v('stelle')], ['Anzahl', v('anzahl')], ['Region', v('region')], ['Besetzung', v('start')]];
       $('[data-sum]', f).innerHTML = rows.map(([a, b]) => `<div><small>${a}</small><b>${String(b).replace(/</g, '&lt;')}</b></div>`).join('');
-      /* Nur Stellenangaben, keine personenbezogenen Daten: Calendly übernimmt sie als Notiz (a1) */
+      /* Stellenangaben wandern per URL ins Kontaktformular und werden dort vorausgefüllt */
       const note = rows.map(([a, b]) => `${a}: ${b}`).join(' | ');
-      $('[data-cal-link]', f).href = `${f.dataset.cal}?a1=${encodeURIComponent(note)}`;
+      $('[data-contact-link]', f).href = `${f.dataset.contact}?stellencheck=${encodeURIComponent(note)}`;
       pages.forEach(p => p.classList.remove('on')); steps.forEach(s => { s.classList.remove('on'); s.classList.add('done'); });
       $('.sc-bar', f).hidden = true; $('.sc-res', f).hidden = false; lbl.textContent = 'Fertig';
     };
@@ -215,5 +215,36 @@
     f.addEventListener('submit', e => { e.preventDefault(); next.click(); });
     fill();
     if ($('input[name="bereich"]:checked', f)) show(1);
+  }
+
+  /* ---------- Kontaktformular (Formspree) ---------- */
+  const cf = $('#kf');
+  if (cf) {
+    const check = new URLSearchParams(location.search).get('stellencheck');
+    if (check) {
+      $('[name="stellencheck"]', cf).value = check;
+      const box = $('[data-check]', cf);
+      box.innerHTML = '<small>Ihre Angaben aus dem Stellen-Check</small>' + check.split(' | ').map(r => `<span>${r.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</span>`).join('');
+      box.hidden = false;
+    }
+    const status = $('[data-status]', cf), send = $('button[type="submit"]', cf);
+    const req = $$('[required]', cf);
+    const ok = el => { const v = el.type === 'checkbox' ? el.checked : el.checkValidity() && el.value.trim() !== ''; el.closest('.fld').classList.toggle('bad', !v); return v; };
+    req.forEach(el => el.addEventListener(el.type === 'checkbox' ? 'change' : 'input', () => el.closest('.fld').classList.contains('bad') && ok(el)));
+    cf.addEventListener('submit', async e => {
+      e.preventDefault();
+      const bad = req.filter(el => !ok(el));
+      status.className = 'kf-status';
+      if (bad.length) { status.textContent = 'Bitte füllen Sie die markierten Felder aus.'; status.classList.add('err'); bad[0].focus(); return; }
+      send.disabled = true; status.textContent = 'Wird gesendet …';
+      try {
+        const res = await fetch(cf.action, { method: 'POST', body: new FormData(cf), headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).errors?.map(x => x.message).join(', ') || res.status);
+        cf.hidden = true; $('[data-sent]').hidden = false; $('[data-sent]').focus();
+      } catch (err) {
+        status.textContent = 'Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per E-Mail.';
+        status.classList.add('err'); send.disabled = false;
+      }
+    });
   }
 })();

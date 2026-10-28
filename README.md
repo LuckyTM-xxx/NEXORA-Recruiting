@@ -9,7 +9,8 @@ Statische Website von NEXORA Recruiting (KI-basiertes Recruiting für Industrie 
 | `index.html` | Startseite (Recruiting-Intelligenz, Phasenmodell, Stellen-Check, FAQ) |
 | `industrie-recruiting.html`, `it-recruiting.html` | Branchenseiten |
 | `landingpages-karriereseiten.html` | Leistungsseite Landingpages & Karriereseiten |
-| `impressum.html`, `datenschutz.html` | Rechtstexte (**Platzhalter ausfüllen**, siehe unten) |
+| `kontakt.html` | Kontaktformular (Versand über Formspree, übernimmt Angaben aus dem Stellen-Check) |
+| `impressum.html`, `datenschutz.html` | Rechtstexte |
 | `styles.css`, `main.js` | Gestaltung und Interaktionen aller Seiten |
 | `assets/logo/` | Logos (SVG für das Web, PNG für Druck/Office) |
 | `assets/fonts/` | Schriften Manrope, Sora, Norican – lokal eingebunden (SIL OFL) |
@@ -38,6 +39,7 @@ Die Dateien landen in `dist/` (nicht im Repository).
 
 ## Vor dem Livegang
 
-- [ ] Im Netlify-Konto das Data Processing Addendum (Auftragsverarbeitungsvertrag) abschließen.
+- [ ] Bei Netlify und Formspree jeweils den Auftragsverarbeitungsvertrag (Data Processing Addendum) abschließen.
+- [ ] Formspree: Formular einmal live testen und die erste Einsendung bestätigen (Formspree verlangt das bei neuen Formularen).
 - [ ] Datenschutzerklärung rechtlich prüfen lassen.
 - [ ] Domain prüfen: Canonical-URLs, `og:image`, `sitemap.xml` und `robots.txt` verweisen auf `https://recruiting.nexora.de/`.
