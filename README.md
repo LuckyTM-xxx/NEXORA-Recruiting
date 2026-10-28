@@ -15,6 +15,7 @@ Statische Website von NEXORA Recruiting (KI-basiertes Recruiting für Industrie 
 | `assets/fonts/` | Schriften Manrope, Sora, Norican – lokal eingebunden (SIL OFL) |
 | `assets/og-image.png` | Vorschaubild für LinkedIn, WhatsApp & Co. |
 | `robots.txt`, `sitemap.xml` | Für Suchmaschinen |
+| `netlify.toml` | Hosting-Einstellungen für Netlify (Sicherheits-Header, Caching) |
 | `tools/build_standalone.py` | Erzeugt Einzeldatei-Versionen der Seiten |
 
 ## Lokal ansehen
@@ -37,5 +38,6 @@ Die Dateien landen in `dist/` (nicht im Repository).
 
 ## Vor dem Livegang
 
-- [ ] In `datenschutz.html` die gelb markierten `[Platzhalter]` (Hosting-Anbieter, Speicherdauer der Logfiles) ersetzen und den Text rechtlich prüfen lassen.
+- [ ] Im Netlify-Konto das Data Processing Addendum (Auftragsverarbeitungsvertrag) abschließen.
+- [ ] Datenschutzerklärung rechtlich prüfen lassen.
 - [ ] Domain prüfen: Canonical-URLs, `og:image`, `sitemap.xml` und `robots.txt` verweisen auf `https://recruiting.nexora.de/`.
