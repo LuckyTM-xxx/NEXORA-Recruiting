@@ -242,8 +242,11 @@
         if (!res.ok) throw new Error((await res.json().catch(() => ({}))).errors?.map(x => x.message).join(', ') || res.status);
         cf.hidden = true; $('[data-sent]').hidden = false; $('[data-sent]').focus();
       } catch (err) {
-        status.textContent = 'Das hat leider nicht geklappt. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt per E-Mail.';
-        status.classList.add('err'); send.disabled = false;
+        /* Hintergrund-Versand abgelehnt (z. B. reCAPTCHA aktiv) oder blockiert:
+           Formular klassisch an Formspree schicken – dort ggf. Captcha, dann Bestätigung */
+        console.warn('Formspree (AJAX):', err.message);
+        status.textContent = 'Einen Moment – Sie werden zur Bestätigung weitergeleitet …';
+        HTMLFormElement.prototype.submit.call(cf);
       }
     });
   }
