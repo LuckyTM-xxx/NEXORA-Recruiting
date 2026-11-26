@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://recruiting.nexora.de/sitemap.xml
+Sitemap: https://www.nexora-recruiting.de/sitemap.xml

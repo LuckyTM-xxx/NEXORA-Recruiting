@@ -42,4 +42,4 @@ Die Dateien landen in `dist/` (nicht im Repository).
 - [ ] Bei Netlify und Formspree jeweils den Auftragsverarbeitungsvertrag (Data Processing Addendum) abschließen.
 - [ ] Formspree: Formular einmal live testen und die erste Einsendung bestätigen (Formspree verlangt das bei neuen Formularen).
 - [ ] Datenschutzerklärung rechtlich prüfen lassen.
-- [ ] Domain prüfen: Canonical-URLs, `og:image`, `sitemap.xml` und `robots.txt` verweisen auf `https://recruiting.nexora.de/`.
+- [ ] Domain prüfen: Canonical-URLs, `og:image`, `sitemap.xml` und `robots.txt` verweisen auf `https://www.nexora-recruiting.de/`.
